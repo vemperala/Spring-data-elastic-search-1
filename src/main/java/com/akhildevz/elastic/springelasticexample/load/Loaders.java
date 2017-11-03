@@ -10,6 +10,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.akhildevz.elastic.springelasticexample.model.Users;
 import com.akhildevz.elastic.springelasticexample.repository.UsersRepository;
 
@@ -22,11 +23,14 @@ public class Loaders {
 	@Autowired
 	UsersRepository usersRepository;
 	
+	
+	
 	@PostConstruct
 	@Transactional
 	public void loadAll() {
 		operations.putMapping(Users.class);
 		System.out.println("loading data");
+		
 		usersRepository.save(getData());
 		System.out.println("loading completed");
 	}
@@ -35,9 +39,9 @@ public class Loaders {
 		// TODO Auto-generated method stub
 		List<Users> list = new ArrayList<Users>();
 		
-		list.add(new Users( 1L, "Akhilesh", "Web Developer", 90000L));
-		list.add(new Users( 2L, "Chinni", "Admin", 100000L));
-		list.add(new Users( 3L, "Anvitha", "Developer", 95000L));
+		list.add(new Users( "Akhilesh",12L, "Web Developer", 90000L));
+		list.add(new Users(  "Chinni", 13L,"Admin", 100000L));
+		list.add(new Users( "Anvitha", 14L, "Developer", 95000L));
 		
 		return list;
 	}

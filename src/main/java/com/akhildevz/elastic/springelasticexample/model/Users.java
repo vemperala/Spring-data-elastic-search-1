@@ -1,12 +1,19 @@
 package com.akhildevz.elastic.springelasticexample.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.springframework.data.elasticsearch.annotations.Document;
+
 
 @Document(indexName = "users", type="users", shards=1)
 public class Users {
 
-	private Long id;
+	
+	
 	private String name;
+	private Long id;
 	private String teamName;
 	private Long salary;
 	
@@ -14,10 +21,11 @@ public class Users {
 		
 	}
 
-	public Users(Long id, String name, String teamName, Long salary) {
-		super();
-		this.id = id;
+	public Users( String name, Long id, String teamName, Long salary) {
+		
+		
 		this.name = name;
+		this.id =id;
 		this.teamName = teamName;
 		this.salary = salary;
 	}
